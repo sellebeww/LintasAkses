@@ -8,6 +8,7 @@
 
 <p><img src="https://img.shields.io/badge/JavaScript-ES%20Modules-F7DF1E?logo=javascript&logoColor=white&labelColor=3a3f47" alt="JavaScript ES Modules"> <img src="https://img.shields.io/badge/Node.js-dev%20server-339933?logo=nodedotjs&logoColor=white&labelColor=3a3f47" alt="Node.js dev server"> <img src="https://img.shields.io/badge/mode-prototipe%20%28data%20fiktif%29-d4a017?labelColor=3a3f47" alt="mode prototipe (data fiktif)"> <img src="https://img.shields.io/badge/license-All%20rights%20reserved-1e3a8a?labelColor=3a3f47" alt="license All rights reserved"></p>
 
+<p><a href="https://lintasakses.vercel.app"><b>Lihat demo langsung &rarr;</b></a></p>
 </div>
 
 <p align="center">
