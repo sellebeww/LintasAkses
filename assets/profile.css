@@ -51,7 +51,7 @@ button,input,select{font:inherit;color:inherit}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:700 15px var(--f-d);padding:15px 26px;min-height:48px;border-radius:99px;text-decoration:none;border:1.5px solid transparent;cursor:pointer;transition:transform .2s var(--ease),box-shadow .2s,background .2s,color .2s}
 .btn.sm{padding:10px 18px;min-height:42px;font-size:14px}
 .btn:active{transform:scale(.97)}
-.btn-gold{background:var(--gold-grad);color:#1a1205;box-shadow:0 8px 26px -10px rgba(199,159,87,.8),inset 0 1px 0 rgba(255,255,255,.5)}
+.btn-gold{background:var(--gold-grad);background-origin:border-box;color:#1a1205;box-shadow:0 8px 26px -10px rgba(199,159,87,.8)}
 .btn-gold:hover{transform:translateY(-2px);box-shadow:0 14px 30px -10px rgba(199,159,87,.9)}
 .btn-gold .ic{transition:transform .25s var(--ease)}.btn-gold:hover .ic{transform:translateX(4px)}
 .btn-ghost{color:#fff;border-color:rgba(255,255,255,.28);background:rgba(255,255,255,.04)}
