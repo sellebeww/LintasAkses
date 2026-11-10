@@ -1,12 +1,14 @@
-<p align="center">
-  <img src="assets/logo/logo-full.png" alt="LintasAkses" width="320">
-</p>
+<div align="center">
 
-<h3 align="center">Every Journey, Within Reach.</h3>
+<img src="assets/logo/logo-full.png" alt="LintasAkses" width="320">
 
-<p align="center">
-  Platform koordinasi perjalanan akses ujung ke ujung: memetakan hambatan, mengoordinasikan perbaikan lintas mitra, dan memverifikasi bahwa perjalanan benar-benar bisa dilalui.
-</p>
+### Every Journey, Within Reach.
+
+<p>Platform koordinasi perjalanan akses ujung ke ujung: memetakan hambatan, mengoordinasikan perbaikan lintas mitra, dan memverifikasi bahwa perjalanan benar-benar bisa dilalui.</p>
+
+<p><img src="https://img.shields.io/badge/JavaScript-ES%20Modules-F7DF1E?logo=javascript&logoColor=white&labelColor=3a3f47" alt="JavaScript ES Modules"> <img src="https://img.shields.io/badge/Node.js-dev%20server-339933?logo=nodedotjs&logoColor=white&labelColor=3a3f47" alt="Node.js dev server"> <img src="https://img.shields.io/badge/mode-prototipe%20%28data%20fiktif%29-d4a017?labelColor=3a3f47" alt="mode prototipe (data fiktif)"> <img src="https://img.shields.io/badge/license-All%20rights%20reserved-1e3a8a?labelColor=3a3f47" alt="license All rights reserved"></p>
+
+</div>
 
 <p align="center">
   <img src="docs/screenshots/01-hero.jpg" alt="Halaman utama LintasAkses dengan peta rute animasi" width="900">
