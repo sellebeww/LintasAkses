@@ -106,8 +106,7 @@ h1 em{display:block;font-size:1.08em;background:var(--gold-grad);-webkit-backgro
 @keyframes march{to{stroke-dashoffset:-20}}
 .n{fill:#fff;stroke:var(--ink);stroke-width:3}.n.end{fill:var(--gold2)}
 .labels .dim{fill-opacity:.55}
-.pin-bg{fill:var(--bad);transition:fill .5s}.pulse{fill:var(--bad);opacity:.3;transform-origin:center;animation:pulse 2s infinite;transition:fill .5s}
-@keyframes pulse{0%{transform:scale(.7);opacity:.5}100%{transform:scale(1.7);opacity:0}}
+.pin-bg{fill:var(--bad);transition:fill .5s}
 #pin{transition:opacity .4s}
 figcaption{margin-top:8px}
 .legend{list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:6px 16px;font:600 12.5px var(--f-d);color:rgba(255,255,255,.75)}

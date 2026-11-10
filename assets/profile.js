@@ -77,7 +77,7 @@
   });
 
   /* ---------- hero route map: status cycle ---------- */
-  const pinBg = $('.pin-bg'), pulse = $('.pulse'), pinIc = $('#pin-ic'), pin = $('#pin'), s3 = $('#s3');
+  const pinBg = $('.pin-bg'), pinIc = $('#pin-ic'), pin = $('#pin'), s3 = $('#s3');
   const chip = $('#map-state'), live = $('#map-live');
   let paused = false, timers = [];
 
@@ -88,21 +88,21 @@
   const states = {
     blocked() {
       s3.setAttribute('class', 'seg bad done-draw');
-      pinBg.style.fill = 'var(--bad)'; pulse.style.fill = 'var(--bad)'; pin.style.opacity = 1;
+      pinBg.style.fill = 'var(--bad)'; pin.style.opacity = 1;
       pinIc.setAttribute('d', 'M-4.5 -4.5l9 9M4.5 -4.5l-9 9');
       setChip('', 'Terhambat', 'i-flag');
       live.textContent = 'Segmen 3 (penyeberangan) belum punya ramp kerb. Seluruh perjalanan tertahan.';
     },
     plan() {
       s3.setAttribute('class', 'seg plan live done-draw');
-      pinBg.style.fill = '#1E8F7B'; pulse.style.fill = '#3FC2A8';
+      pinBg.style.fill = '#1E8F7B';
       pinIc.setAttribute('d', 'M-5.5 0h.01M0 0h.01M5.5 0h.01'); pinIc.setAttribute('stroke-width', '3.4');
       setChip('plan', 'Perbaikan berjalan', 'i-package');
       live.textContent = 'Paket perbaikan disepakati: pengelola jalan memasang ramp kerb. Status: sedang dikerjakan.';
     },
     ok() {
       s3.setAttribute('class', 'seg ok done-draw');
-      pinBg.style.fill = '#B88A45'; pulse.style.fill = '#C79F57';
+      pinBg.style.fill = '#B88A45';
       pinIc.setAttribute('d', 'M-5 0.5l3.5 3.5L5.5 -3.5'); pinIc.setAttribute('stroke-width', '2.6');
       setChip('ok', 'Segmen 3 terverifikasi', 'i-shield');
       live.textContent = 'Verifikator independen menyatakan segmen 3 lolos. Perjalanan kini bisa masuk tahap uji pengguna.';
