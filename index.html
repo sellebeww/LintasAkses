@@ -1,0 +1,398 @@
+<!doctype html>
+<!-- Copyright (c) 2026 Vassel Goleyu. All rights reserved. -->
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LintasAkses — Every Journey, Within Reach</title>
+<meta name="description" content="LintasAkses adalah platform koordinasi perjalanan akses ujung ke ujung: memetakan hambatan, mengoordinasikan perbaikan lintas mitra, dan memverifikasi bahwa perjalanan benar-benar bisa dilalui.">
+<meta name="author" content="Vassel Goleyu">
+<meta name="copyright" content="Vassel Goleyu">
+<meta name="theme-color" content="#0B1B38">
+<link rel="icon" type="image/png" href="assets/logo/logo-mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/profile.css">
+</head>
+<body>
+<a class="skip" href="#main">Lewati ke konten utama</a>
+<div class="progress" aria-hidden="true"><i id="progress"></i></div>
+
+<!-- SVG icon sprite -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-route" viewBox="0 0 24 24"><circle cx="5" cy="18" r="2.2"/><circle cx="19" cy="6" r="2.2"/><path d="M7.2 18H14a3 3 0 0 0 0-6h-4a3 3 0 0 1 0-6h6.8"/></symbol>
+    <symbol id="i-flag" viewBox="0 0 24 24"><path d="M5 21V4"/><path d="M5 4h11l-2 4 2 4H5"/></symbol>
+    <symbol id="i-package" viewBox="0 0 24 24"><path d="M12 3 3.5 7.5v9L12 21l8.5-4.5v-9z"/><path d="M3.5 7.5 12 12l8.5-4.5M12 12v9"/></symbol>
+    <symbol id="i-link" viewBox="0 0 24 24"><circle cx="6" cy="6" r="2.4"/><circle cx="18" cy="8" r="2.4"/><circle cx="12" cy="18" r="2.4"/><path d="m8 7 8 .8M7.2 8.1l3.6 7.7M16.8 10.2l-3.6 5.6"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 5 6v5.5c0 4.3 2.9 7.8 7 9.5 4.1-1.7 7-5.2 7-9.5V6z"/><path d="m9 12 2.2 2.2L15.5 10"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20V4M4 20h16"/><path d="M8 16v-4M12 16V8M16 16v-6"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="2.8"/></symbol>
+    <symbol id="i-coin" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M9.5 9.5c.4-1 1.3-1.5 2.5-1.5 1.5 0 2.5.8 2.5 2 0 2.7-5 1.4-5 4.2 0 1.2 1.1 2 2.5 2 1.2 0 2.2-.5 2.6-1.6M12 6.5V8m0 8v1.5"/></symbol>
+  </defs>
+</svg>
+
+<header class="nav" id="nav">
+  <a class="brand" href="#top" aria-label="LintasAkses, ke atas halaman">
+    <img src="assets/logo/logo-mark-light.png" alt="" width="40" height="41">
+    <img class="brand-word" src="assets/logo/logo-wordmark-light.png" alt="LintasAkses" width="150" height="20">
+  </a>
+  <nav aria-label="Navigasi utama" id="menu">
+    <a href="#top">Beranda</a>
+    <a href="#masalah">Masalah</a>
+    <a href="#cara-kerja">Cara Kerja</a>
+    <a href="#platform">Platform</a>
+    <a href="#mitra">Untuk Mitra</a>
+    <a href="#dampak">Dampak</a>
+    <a href="#tentang">Tentang Kami</a>
+  </nav>
+  <div class="nav-cta">
+    <a class="btn btn-ghost sm" href="app/index.html#/login">Masuk</a>
+    <a class="btn btn-gold sm" href="app/index.html#/demo">Coba Demo</a>
+  </div>
+  <button class="burger" id="burger" aria-expanded="false" aria-controls="menu" aria-label="Buka menu"><span></span><span></span></button>
+</header>
+
+<nav class="chapters" aria-label="Bab halaman" id="chapters">
+  <a href="#top" data-t="top"><span>Beranda</span></a>
+  <a href="#masalah" data-t="masalah"><span>Masalah</span></a>
+  <a href="#cara-kerja" data-t="cara-kerja"><span>Cara kerja</span></a>
+  <a href="#platform" data-t="platform"><span>Platform</span></a>
+  <a href="#beda" data-t="beda"><span>Beda</span></a>
+  <a href="#dampak" data-t="dampak"><span>Dampak</span></a>
+  <a href="#prinsip" data-t="prinsip"><span>Prinsip</span></a>
+  <a href="#mitra" data-t="mitra"><span>Mitra</span></a>
+</nav>
+
+<main id="main">
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top" data-chapter>
+  <div class="hero-bg" aria-hidden="true"><div class="glow" id="glow"></div></div>
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow"><i class="dot"></i> Platform koordinasi perjalanan akses &middot; Prototipe</p>
+      <h1>Setiap perjalanan seharusnya <em>bisa dilalui.</em></h1>
+      <p class="lead">LintasAkses menghubungkan pengguna, pengelola destinasi, penyedia transportasi, dan berbagai mitra untuk mengidentifikasi serta mengatasi hambatan aksesibilitas dalam satu perjalanan yang utuh.</p>
+      <div class="cta-row">
+        <a class="btn btn-gold" href="app/index.html#/demo">Coba Demo Sekarang <svg class="ic"><use href="#i-arrow"/></svg></a>
+        <a class="btn btn-ghost" href="#cara-kerja">Pelajari Cara Kerja</a>
+      </div>
+      <p class="fine">Wilayah demo <strong>Kawasan Puspa</strong> bersifat fiktif. Semua angka dan nama pada halaman ini adalah data simulasi.</p>
+    </div>
+
+    <figure class="map-card" aria-labelledby="map-cap">
+      <div class="map-top">
+        <span class="chip" id="map-state"><svg class="ic"><use href="#i-flag"/></svg><b>Terhambat</b></span>
+        <span class="map-title">Stasiun Contoh <i>→</i> Museum Puspa</span>
+      </div>
+      <svg id="route-map" viewBox="0 0 600 500" role="img" aria-label="Peta skematis satu perjalanan lima segmen dari stasiun ke museum. Segmen penyeberangan berganti status dari hambatan menjadi diperbaiki lalu terverifikasi.">
+        <defs>
+          <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#fff" stroke-opacity=".05"/></pattern>
+        </defs>
+        <rect width="600" height="500" fill="url(#grid)"/>
+        <g class="blocks" fill="#fff" fill-opacity=".035" stroke="#fff" stroke-opacity=".06">
+          <rect x="30" y="60" width="140" height="90" rx="10"/><rect x="190" y="40" width="100" height="120" rx="10"/>
+          <rect x="330" y="300" width="120" height="80" rx="10"/><rect x="470" y="250" width="100" height="130" rx="10"/>
+          <rect x="60" y="260" width="110" height="120" rx="10"/><rect x="300" y="420" width="240" height="60" rx="10"/>
+        </g>
+        <g class="route-base" fill="none" stroke="#fff" stroke-opacity=".12" stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M60 440H170L240 370V290L320 210H440L500 150V80"/>
+        </g>
+        <g id="segs" fill="none" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+          <path id="s1" class="seg ok"  d="M60 440H170" pathLength="100"/>
+          <path id="s2" class="seg plan" d="M170 440L240 370V290" pathLength="100"/>
+          <path id="s3" class="seg bad" d="M240 290L320 210" pathLength="100"/>
+          <path id="s4" class="seg rev" d="M320 210H440" pathLength="100"/>
+          <path id="s5" class="seg wait" d="M440 210L500 150V80" pathLength="100"/>
+        </g>
+        <g class="nodes">
+          <g transform="translate(60 440)"><circle r="11" class="n"/><circle r="4.5" fill="#0B1B38"/></g>
+          <g transform="translate(170 440)"><circle r="8" class="n"/></g>
+          <g transform="translate(240 290)"><circle r="8" class="n"/></g>
+          <g transform="translate(320 210)"><circle r="8" class="n"/></g>
+          <g transform="translate(440 210)"><circle r="8" class="n"/></g>
+          <g transform="translate(500 80)"><circle r="13" class="n end"/><path d="M-4 -4h8v8h-8z" fill="#0B1B38"/></g>
+        </g>
+        <g class="labels" font-family="Plus Jakarta Sans, sans-serif" font-size="13" font-weight="700" fill="#fff" fill-opacity=".85">
+          <text x="60" y="472" text-anchor="middle">Stasiun Contoh</text>
+          <text x="115" y="424" text-anchor="middle" class="dim">Trotoar</text>
+          <text x="222" y="250" text-anchor="end">Penyeberangan</text>
+          <text x="380" y="192" text-anchor="middle" class="dim">Pintu masuk</text>
+          <text x="500" y="52" text-anchor="middle">Museum Puspa</text>
+        </g>
+        <g id="pin" transform="translate(280 250)">
+          <circle class="pulse" r="16"/><circle r="12" class="pin-bg"/>
+          <path id="pin-ic" d="M-4.5 -4.5l9 9M4.5 -4.5l-9 9" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/>
+        </g>
+      </svg>
+      <figcaption id="map-cap">
+        <ul class="legend" aria-label="Legenda status segmen">
+          <li><i class="k ok"></i>Terverifikasi</li>
+          <li><i class="k plan"></i>Perbaikan berjalan</li>
+          <li><i class="k bad"></i>Hambatan</li>
+          <li><i class="k wait"></i>Menunggu verifikasi</li>
+        </ul>
+        <p class="cap-live" id="map-live" aria-live="polite">Segmen 3 (penyeberangan) belum punya ramp kerb. Seluruh perjalanan tertahan.</p>
+        <button class="mini-btn" id="map-pause" aria-pressed="false">Jeda animasi</button>
+      </figcaption>
+    </figure>
+  </div>
+  <a class="scroll-cue" href="#masalah" aria-label="Gulir ke bagian masalah"><span></span></a>
+</section>
+
+<!-- ============ MARQUEE ============ -->
+<section class="marquee" aria-label="Pihak yang terlibat dalam satu perjalanan">
+  <div class="mq-track" aria-hidden="true">
+    <span>Pelancong</span><span>Operator destinasi</span><span>Penyedia transportasi</span><span>Hotel &amp; akomodasi</span><span>Pengelola infrastruktur publik</span><span>Koordinator proyek</span><span>Verifikator lapangan</span>
+    <span>Pelancong</span><span>Operator destinasi</span><span>Penyedia transportasi</span><span>Hotel &amp; akomodasi</span><span>Pengelola infrastruktur publik</span><span>Koordinator proyek</span><span>Verifikator lapangan</span>
+  </div>
+  <p class="sr-only">Pelancong, operator destinasi, penyedia transportasi, hotel dan akomodasi, pengelola infrastruktur publik, koordinator proyek, dan verifikator lapangan.</p>
+</section>
+
+<!-- ============ MASALAH ============ -->
+<section class="sec paper" id="masalah" data-chapter>
+  <div class="wrap">
+    <p class="kicker"><span>01</span> Masalahnya</p>
+    <h2 class="h-xl reveal">Satu fasilitas aksesibel <em>belum tentu</em> membuat seluruh perjalanan menjadi aksesibel.</h2>
+    <p class="sub reveal">Sebuah museum boleh punya toilet ramah kursi roda. Tetapi bila penyeberangan menuju pintunya tidak punya ramp kerb, perjalanan tetap berhenti di sana. Coba sendiri:</p>
+
+    <div class="journey" id="journey" data-state="blocked">
+      <ol class="j-steps">
+        <li class="j-step" data-i="0"><span class="j-n">1</span><b>Titik awal</b><small>Keluar stasiun</small><i class="j-st"><svg class="ic"><use href="#i-check"/></svg>Aman</i></li>
+        <li class="j-step" data-i="1"><span class="j-n">2</span><b>Transportasi</b><small>Halte penghubung</small><i class="j-st"><svg class="ic"><use href="#i-check"/></svg>Aman</i></li>
+        <li class="j-step bad" data-i="2"><span class="j-n">3</span><b>Jalur pejalan</b><small>Penyeberangan jalan</small><i class="j-st"><svg class="ic"><use href="#i-x"/></svg><span class="st-t">Tanpa ramp kerb</span></i></li>
+        <li class="j-step" data-i="3"><span class="j-n">4</span><b>Pintu masuk</b><small>Gedung museum</small><i class="j-st"><svg class="ic"><use href="#i-check"/></svg>Landai</i></li>
+        <li class="j-step" data-i="4"><span class="j-n">5</span><b>Tujuan akhir</b><small>Ruang pamer</small><i class="j-st"><svg class="ic"><use href="#i-check"/></svg>Lift berfungsi</i></li>
+      </ol>
+      <div class="j-line" aria-hidden="true"><i id="j-fill"></i><b id="j-dot"></b></div>
+      <div class="j-foot">
+        <p id="j-msg" aria-live="polite"><strong>Perjalanan terhenti di segmen 3.</strong> Empat segmen lain aksesibel, tetapi tidak satu pun berguna bila pengguna tidak bisa menyeberang.</p>
+        <div class="j-actions">
+          <button class="btn btn-navy" id="j-fix" type="button">Perbaiki segmen 3</button>
+          <button class="btn btn-line" id="j-reset" type="button" hidden>Ulangi</button>
+        </div>
+      </div>
+    </div>
+    <p class="note reveal">Ilustrasi konsep. Dalam platform, status “selesai” baru dicatat setelah diverifikasi pihak independen dan diuji oleh pengguna dengan kebutuhan akses yang sesuai.</p>
+  </div>
+</section>
+
+<!-- ============ CARA KERJA ============ -->
+<section class="sec dark" id="cara-kerja" data-chapter>
+  <div class="wrap">
+    <p class="kicker"><span>02</span> Cara kerja</p>
+    <h2 class="h-xl reveal">Dari peta hambatan <em>ke perjalanan yang terbukti.</em></h2>
+    <ol class="steps">
+      <li class="step reveal">
+        <span class="num">01</span>
+        <h3>Petakan perjalanan</h3>
+        <p>Pengguna membuat perjalanan, memecahnya menjadi segmen, dan memilih kebutuhan akses tanpa perlu menyebut diagnosis.</p>
+        <ul><li>Segmen berurutan</li><li>Preferensi akses</li></ul>
+      </li>
+      <li class="step reveal">
+        <span class="num">02</span>
+        <h3>Identifikasi hambatan</h3>
+        <p>Kondisi akses yang belum terpenuhi dicatat per segmen, lengkap dengan bukti, dampak, dan tingkat prioritas.</p>
+        <ul><li>Laporan + foto</li><li>ID hambatan unik</li></ul>
+      </li>
+      <li class="step reveal">
+        <span class="num">03</span>
+        <h3>Koordinasikan perbaikan</h3>
+        <p>Hambatan lintas lokasi dikelompokkan menjadi satu paket perbaikan. Tiap mitra hanya menerima tugas yang menjadi tanggung jawabnya.</p>
+        <ul><li>Paket perbaikan</li><li>Komitmen &amp; anggaran</li></ul>
+      </li>
+      <li class="step reveal">
+        <span class="num">04</span>
+        <h3>Verifikasi hasilnya</h3>
+        <p>Verifikator independen memeriksa di lapangan, lalu pengguna sungguhan menguji perjalanan. Baru setelah itu dihitung sebagai berhasil.</p>
+        <ul><li>Daftar periksa terstruktur</li><li>Uji pengguna</li></ul>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ PLATFORM ============ -->
+<section class="sec paper" id="platform" data-chapter>
+  <div class="wrap">
+    <p class="kicker"><span>03</span> Platform</p>
+    <h2 class="h-xl reveal">Lima peran, <em>satu perjalanan.</em></h2>
+    <p class="sub reveal">Setiap peran punya dasbor, menu, dan izin sendiri. Informasi privat satu organisasi tidak pernah terlihat oleh organisasi lain tanpa izin.</p>
+
+    <div class="tabs" role="tablist" aria-label="Pilih peran" id="role-tabs"></div>
+    <div class="role-stage" id="role-stage" role="tabpanel" aria-live="polite"></div>
+  </div>
+</section>
+
+<!-- ============ FITUR ============ -->
+<section class="sec paper2" id="fitur">
+  <div class="wrap">
+    <p class="kicker"><span>04</span> Fitur utama</p>
+    <h2 class="h-lg reveal">Enam alat untuk menyambung <em>satu garis perjalanan.</em></h2>
+    <div class="features">
+      <article class="card fx reveal"><svg class="ic lg"><use href="#i-route"/></svg><h3>Pemetaan Perjalanan</h3><p>Wizard empat langkah untuk menyusun segmen dari titik awal sampai tujuan, plus peta skematis dan daftar yang setara.</p></article>
+      <article class="card fx reveal"><svg class="ic lg"><use href="#i-flag"/></svg><h3>Pelaporan Hambatan</h3><p>Laporkan hambatan dengan bukti, dampak, dan pilihan visibilitas. Setiap laporan mendapat nomor referensi dan bisa dilacak.</p></article>
+      <article class="card fx reveal"><svg class="ic lg"><use href="#i-package"/></svg><h3>Paket Perbaikan</h3><p>Kelompokkan beberapa hambatan dari segmen berbeda, tetapkan tujuan, jadwal, mitra penanggung jawab, dan anggaran ilustratif.</p></article>
+      <article class="card fx reveal"><svg class="ic lg"><use href="#i-link"/></svg><h3>Kolaborasi Mitra</h3><p>Mitra dapat menerima, menolak dengan alasan, atau mengusulkan alternatif. Semua tercatat pada utas aktivitas bersama.</p></article>
+      <article class="card fx reveal"><svg class="ic lg"><use href="#i-shield"/></svg><h3>Verifikasi Lapangan</h3><p>Daftar periksa mobilitas, visual, pendengaran, kognitif, dan sensorik. Hasil menyimpan tanggal, ruang lingkup, dan bukti.</p></article>
+      <article class="card fx reveal"><svg class="ic lg"><use href="#i-chart"/></svg><h3>Pengukuran Dampak</h3><p>Aktivitas, keluaran, dan hasil dipisahkan. Metode hitung terbuka, dan data verifikasi lama ditandai kedaluwarsa.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BEDA ============ -->
+<section class="sec dark" id="beda" data-chapter>
+  <div class="wrap">
+    <p class="kicker"><span>05</span> Mengapa berbeda</p>
+    <h2 class="h-lg reveal">Ukuran keberhasilannya <em>bukan jumlah ramp.</em></h2>
+    <div class="vs">
+      <div class="vs-col old reveal">
+        <h3>Pendekatan berbasis fasilitas</h3>
+        <ul>
+          <li><svg class="ic"><use href="#i-x"/></svg>Berfokus pada fasilitas satu per satu</li>
+          <li><svg class="ic"><use href="#i-x"/></svg>Mengukur jumlah fasilitas yang diperbaiki</li>
+          <li><svg class="ic"><use href="#i-x"/></svg>Tanggung jawab dikelola terpisah-pisah</li>
+          <li><svg class="ic"><use href="#i-x"/></svg>Hasil perbaikan bisa saling terputus</li>
+        </ul>
+        <p class="vs-m"><small>Metrik utama</small><b>Ramp terpasang</b></p>
+      </div>
+      <div class="vs-col new reveal">
+        <h3>LintasAkses</h3>
+        <ul>
+          <li><svg class="ic"><use href="#i-check"/></svg>Berfokus pada seluruh perjalanan</li>
+          <li><svg class="ic"><use href="#i-check"/></svg>Mengukur perjalanan yang menjadi layak</li>
+          <li><svg class="ic"><use href="#i-check"/></svg>Mengoordinasikan banyak pihak penanggung jawab</li>
+          <li><svg class="ic"><use href="#i-check"/></svg>Memverifikasi kegunaan nyata perjalanan</li>
+        </ul>
+        <p class="vs-m"><small>Metrik utama</small><b>Perjalanan layak &amp; teruji</b></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DAMPAK ============ -->
+<section class="sec paper" id="dampak" data-chapter>
+  <div class="wrap">
+    <p class="kicker"><span>06</span> Dampak</p>
+    <h2 class="h-lg reveal">Mengukur perjalanan yang <em>kami buat mungkin.</em></h2>
+    <p class="sim reveal"><svg class="ic"><use href="#i-eye"/></svg> Seluruh angka di bagian ini adalah <strong>data simulasi</strong> dari wilayah demo fiktif, bukan hasil dunia nyata.</p>
+
+    <div class="tiers">
+      <div class="tier reveal"><small>Aktivitas</small><h3>Tindakan yang dilakukan</h3>
+        <dl><div><dt>Perjalanan dinilai</dt><dd><b data-count="5">0</b></dd></div><div><dt>Hambatan menunggu perbaikan</dt><dd><b data-count="9">0</b></dd></div><div><dt>Paket perbaikan aktif</dt><dd><b data-count="1">0</b></dd></div></dl></div>
+      <div class="tier reveal"><small>Keluaran</small><h3>Hambatan yang diperbaiki</h3>
+        <dl><div><dt>Perbaikan terverifikasi</dt><dd><b data-count="3">0</b></dd></div><div><dt>Segmen dinyatakan siap</dt><dd><b data-count="4">0</b></dd></div></dl></div>
+      <div class="tier out reveal"><small>Hasil</small><h3>Perjalanan yang terbukti</h3>
+        <dl><div><dt>Perjalanan berhasil diuji pengguna</dt><dd><b data-count="1">0</b></dd></div><div><dt>Kombinasi perjalanan × kebutuhan akses</dt><dd><b data-count="1">0</b></dd></div></dl></div>
+    </div>
+    <p class="note reveal">Memasang fasilitas adalah <em>keluaran</em>. Hanya perjalanan yang lolos verifikasi segmen kritis dan diuji pengguna yang dihitung sebagai <em>hasil</em>. Satu uji berhasil tidak menjamin aksesibilitas untuk semua orang. <a href="app/index.html#/impact">Lihat dasbor dampak &amp; metodologi</a>.</p>
+  </div>
+</section>
+
+<!-- ============ PRINSIP ============ -->
+<section class="sec dark2" id="prinsip" data-chapter>
+  <div class="wrap">
+    <p class="kicker"><span>07</span> Prinsip yang tidak ditawar</p>
+    <h2 class="h-lg reveal">Kepercayaan dibangun dari <em>apa yang kami tolak klaim.</em></h2>
+    <div class="principles">
+      <article class="reveal"><svg class="ic lg"><use href="#i-shield"/></svg><h3>Verifikasi bukan sertifikasi resmi</h3><p>Verifikasi LintasAkses bersifat independen dan internal. Kami tidak menyebutnya sertifikasi pemerintah kecuali ada proses berwenang yang sungguh berjalan.</p></article>
+      <article class="reveal"><svg class="ic lg"><use href="#i-check"/></svg><h3>Satu uji ≠ jaminan semua orang</h3><p>Perjalanan “berhasil diuji” hanya untuk kebutuhan akses dan pengguna yang terlibat. Ruang lingkup selalu dicantumkan.</p></article>
+      <article class="reveal"><svg class="ic lg"><use href="#i-coin"/></svg><h3>Pembayaran tidak mengubah status</h3><p>Biaya layanan tidak boleh menyembunyikan laporan negatif atau mengubah status aksesibilitas. Setiap keputusan tercatat di log audit.</p></article>
+      <article class="reveal"><svg class="ic lg"><use href="#i-lock"/></svg><h3>Privasi sejak desain</h3><p>Tidak ada kewajiban menyebut diagnosis medis. Pelapor memilih visibilitas laporan: publik tanpa identitas, bersama mitra, atau privat.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BISNIS + ROADMAP ============ -->
+<section class="sec paper" id="model">
+  <div class="wrap two">
+    <div>
+      <p class="kicker"><span>08</span> Model bisnis</p>
+      <h2 class="h-md reveal">Organisasi yang membayar. <em>Pelancong tidak.</em></h2>
+      <p class="sub reveal">Informasi akses inti untuk pelancong tetap tersedia tanpa biaya. Pendapatan datang dari pihak yang mengoordinasikan dan membuktikan perbaikan.</p>
+    </div>
+    <ul class="rev reveal">
+      <li><b>Biaya koordinasi proyek</b><span>Proyek perbaikan multipihak</span></li>
+      <li><b>Langganan enterprise</b><span>Dasbor &amp; pelaporan untuk operator</span></li>
+      <li><b>Layanan verifikasi</b><span>Asesmen independen berbayar</span></li>
+      <li><b>Laporan dampak &amp; konsultasi</b><span>Dokumentasi hasil untuk konsorsium</span></li>
+    </ul>
+  </div>
+  <div class="wrap">
+    <p class="kicker rm-k"><span>09</span> Peta jalan <small>(rencana indikatif)</small></p>
+    <ol class="roadmap">
+      <li class="reveal"><i>Tahap 1</i><b>Prototipe</b><p>Alur lengkap lima peran dengan data simulasi. <em class="now">Anda di sini</em></p></li>
+      <li class="reveal"><i>Tahap 2</i><b>Pilot satu kawasan</b><p>Satu koridor nyata bersama mitra dan verifikator.</p></li>
+      <li class="reveal"><i>Tahap 3</i><b>Skala kota</b><p>Banyak koridor, integrasi peta sungguhan bila konfigurasi tersedia.</p></li>
+      <li class="reveal"><i>Tahap 4</i><b>Jaringan antar-kota</b><p>Pustaka praktik terbaik dan pelaporan dampak lintas konsorsium.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ TENTANG ============ -->
+<section class="sec dark" id="tentang" data-chapter>
+  <div class="wrap two">
+    <div>
+      <p class="kicker"><span>10</span> Tentang kami</p>
+      <h2 class="h-md reveal">Perjalanan hanya aksesibel <em>bila setiap bagiannya bekerja bersama.</em></h2>
+    </div>
+    <div class="about reveal">
+      <h3>Visi</h3><p>Setiap orang dapat merencanakan dan menempuh perjalanan dengan kebutuhan akses mereka terpenuhi dari awal sampai akhir.</p>
+      <h3>Misi</h3>
+      <ul><li>Membuat hambatan perjalanan terlihat, terukur, dan punya pemilik.</li><li>Menyatukan banyak pihak dalam satu rencana perbaikan yang bisa dilacak.</li><li>Membuktikan hasil lewat verifikasi independen dan uji pengguna.</li></ul>
+      <h3>Nilai</h3><p>Transparan soal batas klaim. Hormat pada keragaman kebutuhan. Berorientasi hasil, bukan pencitraan.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MITRA ============ -->
+<section class="partner" id="mitra" data-chapter>
+  <div class="wrap">
+    <div class="p-card">
+      <div>
+        <p class="kicker"><span>11</span> Untuk mitra</p>
+        <h2 class="h-lg">Bangun destinasi yang lebih <em>mudah diakses, bersama.</em></h2>
+        <p class="sub">Operator wisata, penyedia transportasi, pengelola infrastruktur publik, hotel, dan organisasi lain dapat bergabung dalam satu paket perbaikan, menerima tugas yang relevan, dan melihat bukti hasil.</p>
+        <div class="cta-row">
+          <a class="btn btn-gold" href="app/index.html#/register">Jadi Mitra <svg class="ic"><use href="#i-arrow"/></svg></a>
+          <a class="btn btn-ghost" href="app/index.html#/demo/partner">Coba dasbor mitra</a>
+        </div>
+      </div>
+      <form class="contact" id="contact" novalidate aria-labelledby="c-h">
+        <h3 id="c-h">Hubungi kami</h3>
+        <label>Nama organisasi<input name="org" required autocomplete="organization"></label>
+        <label>Email<input name="email" type="email" required autocomplete="email"></label>
+        <label>Jenis mitra
+          <select name="type"><option>Operator destinasi</option><option>Penyedia transportasi</option><option>Hotel / akomodasi</option><option>Pengelola infrastruktur publik</option><option>Lainnya</option></select>
+        </label>
+        <p class="err" id="c-err" role="alert" hidden></p>
+        <button class="btn btn-gold" type="submit">Kirim minat</button>
+        <p class="fine">Prototipe: formulir ini tidak mengirim data ke server mana pun.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-grid">
+    <div class="foot-brand">
+      <img src="assets/logo/logo-full-light.png" alt="LintasAkses — Every Journey, Within Reach." width="260" height="76" loading="lazy">
+      <p>Karena perjalanan hanya aksesibel bila setiap bagiannya bekerja bersama.</p>
+    </div>
+    <nav aria-label="Tentang"><h4>LintasAkses</h4><a href="#tentang">Tentang LintasAkses</a><a href="#platform">Fitur Platform</a><a href="#mitra">Informasi Mitra</a><a href="app/index.html#/impact">Dasbor Dampak</a></nav>
+    <nav aria-label="Bantuan"><h4>Bantuan</h4><a href="#mitra">Kontak</a><a href="app/index.html#/page/help">Pusat Bantuan</a><a href="app/index.html#/page/privacy">Kebijakan Privasi</a><a href="app/index.html#/page/terms">Ketentuan Layanan</a><a href="app/index.html#/page/a11y">Pernyataan Aksesibilitas</a></nav>
+    <nav aria-label="Media sosial"><h4>Media sosial</h4><a href="#" data-soon>Instagram</a><a href="#" data-soon>LinkedIn</a><a href="#" data-soon>YouTube</a></nav>
+  </div>
+  <div class="wrap foot-base"><p>© 2026 Vassel Goleyu. All rights reserved. Prototipe dengan data simulasi; nama tempat di Kawasan Puspa adalah fiktif.</p></div>
+</footer>
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+<script src="assets/profile.js"></script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!doctype html>
+<!-- Copyright (c) 2026 Vassel Goleyu. All rights reserved. -->
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LintasAkses · Aplikasi</title>
+<meta name="description" content="Prototipe aplikasi LintasAkses: koordinasi perjalanan akses ujung ke ujung dengan lima peran. Data simulasi.">
+<meta name="author" content="Vassel Goleyu">
+<meta name="copyright" content="Vassel Goleyu">
+<meta name="theme-color" content="#18334A">
+<link rel="icon" type="image/png" href="../assets/logo/logo-mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<div id="app"><p class="center-p" style="padding:48px">Memuat LintasAkses…</p></div>
+<div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+<div id="live" class="sr" aria-live="polite"></div>
+<noscript><p style="padding:24px">LintasAkses memerlukan JavaScript untuk menjalankan prototipe ini.</p></noscript>
+<script src="data.js"></script>
+<script src="ui.js"></script>
+<script src="views-pub.js"></script>
+<script src="views-trav.js"></script>
+<script src="views-ops.js"></script>
+<script src="views-ver.js"></script>
+<script>U.render();</script>
+</body>
+</html>
