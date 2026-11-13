@@ -1,0 +1,58 @@
+name: CI
+
+on:
+  push:
+    branches: [main, improve/safe-quality]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+env:
+  TZ: UTC
+  LANG: C.UTF-8
+
+jobs:
+  unit:
+    name: Sintaks dan tes unit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      # Proyek tidak punya dependensi runtime maupun lockfile, jadi tidak ada langkah `npm ci`.
+      - run: npm run check
+      - run: npm test
+
+  e2e:
+    name: Tes e2e (Playwright Chromium)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      # Playwright hanya alat tes; dipasang tanpa mengubah package.json.
+      - run: npm install --no-save --no-audit --no-fund playwright@1.63.0
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:e2e
+
+  build:
+    name: Build (situs statis, tanpa build step)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      # Tidak ada build step: situs dilayani apa adanya. Pastikan server statis menyajikan halaman utama dan aset.
+      - run: |
+          NO_OPEN=1 PORT=8765 node dev.mjs &
+          sleep 2
+          for p in / /app/index.html /assets/profile.css /assets/profile.js /app/data.js /assets/logo/logo-mark.png; do
+            code=$(curl -s -o /dev/null -w '%{http_code}' "http://127.0.0.1:8765$p")
+            echo "$p -> $code"
+            [ "$code" = "200" ] || exit 1
+          done

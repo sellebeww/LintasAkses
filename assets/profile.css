@@ -254,7 +254,7 @@ figcaption{margin-top:8px}
 .rev li{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:20px 4px;border-bottom:1px solid var(--line);transition:padding .3s var(--ease),background .3s}
 .rev li:hover{padding-inline:16px;background:var(--paper2)}
 .rev b{font:700 1.1rem var(--f-d)}.rev span{color:var(--muted);font-size:14.5px;text-align:right}
-.rm-k{margin-top:90px}.rm-k small{text-transform:none;letter-spacing:0;font-weight:500;opacity:.8}
+.rm-k{margin-top:90px}.rm-k small{text-transform:none;letter-spacing:0;font-weight:500}
 .roadmap{list-style:none;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;position:relative;margin-top:10px}
 .roadmap::before{content:"";position:absolute;left:0;right:0;top:9px;height:2px;background:linear-gradient(90deg,var(--gold2),var(--line) 28%)}
 .roadmap li{padding-top:34px;position:relative}

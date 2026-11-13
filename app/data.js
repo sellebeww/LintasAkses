@@ -157,7 +157,9 @@
 
   /* ---------- store ---------- */
   let db;
-  const load = () => { try { const s = localStorage.getItem(KEY); db = s ? JSON.parse(s) : null; } catch (e) { db = null; } if (!db || db.v !== 1) { db = seed(); save(); } return db; };
+  const COLLECTIONS = ['users', 'orgs', 'locations', 'journeys', 'barriers', 'packages', 'commitments', 'verifs', 'tests', 'notifs', 'logs'];
+  const valid = d => !!d && typeof d === 'object' && d.v === 1 && COLLECTIONS.every(k => Array.isArray(d[k])) && !!d.settings && typeof d.settings === 'object';
+  const load = () => { try { const s = localStorage.getItem(KEY); db = s ? JSON.parse(s) : null; } catch (e) { db = null; } if (!valid(db)) { db = seed(); save(); } return db; };
   const save = () => { try { localStorage.setItem(KEY, JSON.stringify(db)); } catch (e) { /* storage blocked: stays in memory */ } };
   load();
   const nid = (arr, p) => p + (arr.reduce((m, x) => Math.max(m, parseInt(String(x.id).replace(/\D/g, '')) || 0), 0) + 1);
@@ -170,7 +172,7 @@
     commit: id => db.commitments.find(c => c.id === id), verif: id => db.verifs.find(v => v.id === id),
     orgName: id => (db.orgs.find(o => o.id === id) || {}).name || '—', userName: id => (db.users.find(u => u.id === id) || {}).name || '—',
     barriersOf: j => db.barriers.filter(b => b.journeyId === (j.id || j)),
-    segOf: (j, sid) => j.segs.find(s => s.id === sid),
+    segOf: (j, sid) => j ? j.segs.find(s => s.id === sid) : undefined,
 
     /* journey status machine (derived from underlying records, never hand-set) */
     journeyStatus(j) {
