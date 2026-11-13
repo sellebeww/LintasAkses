@@ -33,7 +33,7 @@ Belum diubah (keputusan Anda):
 
 ## 360px
 
-Tidak ditemukan gulir horizontal pada halaman profil, login, demo, bantuan, dampak, dan 30 halaman dasbor kelima peran. Pengukuran di `tests/e2e/a11y.e2e.mjs` menetralkan `overflow-x` pada `body` lebih dulu, sehingga tidak tertutup. `body{overflow-x:hidden}` di `assets/profile.css` ternyata tidak diperlukan (hero dan marquee sudah memotong sendiri lewat `overflow:hidden`). Aturan itu dibiarkan agar tidak mengubah perilaku, tetapi aman dihapus.
+Tidak ditemukan gulir horizontal pada halaman profil, login, demo, bantuan, dampak, dan dasbor kelima peran (tes e2e mencakup 5 halaman publik dan 18 halaman dasbor; pemeriksaan manual awal mencakup sekitar 40). Pengukuran di `tests/e2e/a11y.e2e.mjs` menetralkan `overflow-x` pada `body` lebih dulu, sehingga tidak tertutup. `body{overflow-x:hidden}` di `assets/profile.css` ternyata tidak diperlukan (hero dan marquee sudah memotong sendiri lewat `overflow:hidden`). Aturan itu dibiarkan agar tidak mengubah perilaku, tetapi aman dihapus.
 
 ## Penyimpanan localStorage
 
