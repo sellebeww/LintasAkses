@@ -69,7 +69,7 @@ Verifikator mengisi daftar periksa terstruktur dengan bukti foto, lalu memutuska
 
 ## Menjalankan
 
-Butuh Node.js saja, tanpa install dependensi dan tanpa build step.
+Butuh Node.js 22 saja, tanpa install dependensi dan tanpa build step.
 
 ```bash
 npm run dev
@@ -85,20 +85,47 @@ Lalu buka:
 
 Port pindah otomatis bila terpakai. Untuk mengatur ulang data demo, buka menu **Atur ulang data demo** di aplikasi.
 
+## Skrip
+
+| Perintah | Fungsi |
+|---|---|
+| `npm run dev` | Server statis lokal (`dev.mjs`) |
+| `npm run check` | Pemeriksaan sintaks semua file `.js`/`.mjs` |
+| `npm test` | Tes unit (`node:test`, tanpa dependensi) |
+| `npm run test:e2e` | Tes e2e Playwright Chromium (lihat di bawah) |
+
+## Tes
+
+- **Unit** (`tests/*.test.mjs`): memuat `app/data.js` di Node dengan `localStorage` tiruan, waktu dibekukan, dan `TZ=UTC`. Mencakup status perjalanan dan segmen, mesin status hambatan, validasi verifikasi dan uji pengguna, penyimpanan (termasuk data korup dan storage diblokir), serta integritas data fiktif (id unik, referensi valid).
+- **E2E** (`tests/e2e/*.e2e.mjs`): smoke semua halaman peran, tanpa gulir horizontal di 360px, `prefers-reduced-motion`, fokus keyboard, alternatif teks peta, dan data `localStorage` korup. Butuh paket `playwright` (alat tes, tidak masuk `package.json`):
+
+  ```bash
+  npm install --no-save playwright@1.63.0
+  npx playwright install chromium
+  npm run test:e2e
+  ```
+
+CI (`.github/workflows/ci.yml`) menjalankan sintaks, tes unit, e2e, dan pemeriksaan penyajian situs pada Node 22.
+
 ## Struktur
 
 | Bagian | File |
 |---|---|
 | Company profile (animasi) | `index.html`, `assets/profile.css`, `assets/profile.js` |
-| Aplikasi lima peran + dasbor dampak | `app/` (hash-router, vanilla JS) |
+| Aplikasi lima peran + dasbor dampak | `app/` (hash-router, vanilla JS; model dan data di `app/data.js`) |
 | Logo transparan | `assets/logo/` |
 | Server statis lokal | `dev.mjs` |
+| Tes dan skrip bantu | `tests/`, `scripts/` |
+| Audit | `docs/AUDIT.md` |
 
 ## Catatan jujur
 
 - Semua data fiktif dan hanya tersimpan di browser Anda.
 - Verifikasi adalah penilaian internal, bukan sertifikasi pemerintah.
 - Angka anggaran bersifat ilustratif.
+- Tidak ada server, pembayaran, peta langsung, atau unggah berkas nyata (bukti hanya nama berkas).
+- Data tersimpan di satu kunci `localStorage` per browser; tidak ada sinkronisasi antar-tab atau migrasi versi.
+- Temuan dan keputusan yang belum diambil ada di [docs/AUDIT.md](docs/AUDIT.md).
 
 ## Author & License
 
