@@ -157,7 +157,9 @@
 
   /* ---------- store ---------- */
   let db;
-  const load = () => { try { const s = localStorage.getItem(KEY); db = s ? JSON.parse(s) : null; } catch (e) { db = null; } if (!db || db.v !== 1) { db = seed(); save(); } return db; };
+  const COLLECTIONS = ['users', 'orgs', 'locations', 'journeys', 'barriers', 'packages', 'commitments', 'verifs', 'tests', 'notifs', 'logs'];
+  const valid = d => !!d && typeof d === 'object' && d.v === 1 && COLLECTIONS.every(k => Array.isArray(d[k])) && !!d.settings && typeof d.settings === 'object';
+  const load = () => { try { const s = localStorage.getItem(KEY); db = s ? JSON.parse(s) : null; } catch (e) { db = null; } if (!valid(db)) { db = seed(); save(); } return db; };
   const save = () => { try { localStorage.setItem(KEY, JSON.stringify(db)); } catch (e) { /* storage blocked: stays in memory */ } };
   load();
   const nid = (arr, p) => p + (arr.reduce((m, x) => Math.max(m, parseInt(String(x.id).replace(/\D/g, '')) || 0), 0) + 1);
