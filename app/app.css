@@ -29,7 +29,7 @@ button,input,select,textarea{font:inherit;color:inherit}
 .icon-btn{width:44px;height:44px;border-radius:10px;border:1px solid var(--line);background:#fff;display:inline-grid;place-items:center;cursor:pointer;color:var(--navy);position:relative;text-decoration:none}
 .icon-btn:hover{background:var(--teal-s)}
 .lnk{background:none;border:0;color:inherit;text-decoration:underline;cursor:pointer;padding:0}
-.cnt{position:absolute;top:-4px;right:-4px;min-width:20px;height:20px;border-radius:10px;background:var(--bad);color:#fff;font:700 11.5px/20px var(--f-b);text-align:center;padding:0 5px}
+.cnt{position:absolute;top:-4px;right:-4px;min-width:20px;height:20px;border-radius:10px;background:var(--bad-t);color:#fff;font:700 11.5px/20px var(--f-b);text-align:center;padding:0 5px}
 .row-g{display:flex;flex-wrap:wrap;gap:8px;align-items:center}.row-sb{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
 
 /* shell */
