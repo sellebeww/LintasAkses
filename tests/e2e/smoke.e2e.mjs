@@ -60,3 +60,21 @@ test('localStorage JSON rusak tidak membuat aplikasi crash', async () => {
   assert.deepEqual(page.errors, []);
   await page.context().close();
 });
+
+test('menghapus perjalanan yang masih punya hambatan/paket tidak membuat halaman error', async () => {
+  const page = await newPage(browser);
+  await page.goto(`${APP}#/demo/admin`);
+  await page.locator('main h1').first().waitFor();
+  await page.evaluate(() => M.deleteJourney('j1', M.user('u5')));
+  const SESS = { admin: 'u5', coordinator: 'u3', verifier: 'u4', partner: 'u2' };
+  const PATHS = { admin: ['/a', '/a/journeys', '/a/moderation'], coordinator: ['/c/packages/p1', '/c/barriers', '/c/timeline'], verifier: ['/v/assigned', '/v/visits'], partner: ['/p/reports', '/p/requests'] };
+  for (const [role, paths] of Object.entries(PATHS)) {
+    await page.evaluate(([r, u]) => sessionStorage.setItem('lintasakses.session', JSON.stringify({ userId: u, demo: true })), [role, SESS[role]]);
+    for (const p of paths) {
+      await page.evaluate(h => { location.hash = h; }, '#' + p);
+      await page.locator('main h1').first().waitFor();
+      assert.notEqual((await page.locator('main h1').first().innerText()).trim(), 'Kesalahan', `${role} ${p}`);
+    }
+  }
+  await page.context().close();
+});

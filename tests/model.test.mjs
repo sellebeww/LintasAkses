@@ -149,3 +149,13 @@ test('deleteJourney, createJourney: id unik', () => {
   M.deleteJourney(id, u);
   assert.equal(M.journey(id), undefined);
 });
+
+test('segOf aman untuk perjalanan yang sudah dihapus (referensi yatim)', () => {
+  const { M } = loadModel();
+  const u = M.user('u1');
+  const orphan = M.barrier('BR-0001');
+  M.deleteJourney('j1', u);
+  assert.equal(M.journey(orphan.journeyId), undefined);
+  assert.doesNotThrow(() => M.segOf(M.journey(orphan.journeyId), orphan.segId));
+  assert.equal(M.segOf(M.journey(orphan.journeyId), orphan.segId), undefined);
+});

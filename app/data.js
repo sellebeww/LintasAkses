@@ -172,7 +172,7 @@
     commit: id => db.commitments.find(c => c.id === id), verif: id => db.verifs.find(v => v.id === id),
     orgName: id => (db.orgs.find(o => o.id === id) || {}).name || '—', userName: id => (db.users.find(u => u.id === id) || {}).name || '—',
     barriersOf: j => db.barriers.filter(b => b.journeyId === (j.id || j)),
-    segOf: (j, sid) => j.segs.find(s => s.id === sid),
+    segOf: (j, sid) => j ? j.segs.find(s => s.id === sid) : undefined,
 
     /* journey status machine (derived from underlying records, never hand-set) */
     journeyStatus(j) {
