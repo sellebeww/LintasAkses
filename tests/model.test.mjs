@@ -93,7 +93,7 @@ test('submitVerif: aturan hasil Terverifikasi', () => {
   assert.match(M.submitVerif('vf1', { ...base, method: '' }, u), /Metode/);
   assert.match(M.submitVerif('vf1', { ...base, notes: ' ' }, u), /Observasi/);
   assert.match(M.submitVerif('vf1', { ...base, evidence: [] }, u), /bukti foto/);
-  assert.match(M.submitVerif('vf1', { ...base, checklist: { m1: { a: 'Perlu perbaikan' } } }, u), /Needs Improvement/);
+  assert.match(M.submitVerif('vf1', { ...base, checklist: { m1: { a: 'Perlu perbaikan' } } }, u), /Perlu perbaikan/);
   assert.match(M.submitVerif('vf1', { ...base, checklist: { m1: { a: 'Tidak berlaku' } } }, u), /benar-benar diverifikasi/);
   assert.equal(M.barrier('BR-0004').status, 'Selesai, menunggu verifikasi', 'penolakan validasi tidak mengubah data');
   assert.equal(M.submitVerif('vf1', base, u), null);

@@ -45,8 +45,6 @@ Tidak ditemukan gulir horizontal pada halaman profil, login, demo, bantuan, damp
 ## Lain-lain
 
 - Penghapusan perjalanan tidak mengikutkan hambatan, paket, dan uji terkait (data yatim). Sekarang tidak lagi membuat halaman error, tetapi data yatim tetap ada. Menghapus berantai atau melarang hapus adalah keputusan produk.
-- Anggaran `p1`: `approved` Rp 200 juta, sedangkan jumlah `improvement + coordination + verification` Rp 220 juta, dan log seed menyebut revisi menjadi Rp 220 juta. Kemungkinan seed belum diperbarui. Tidak diubah karena menyangkut data.
-- Pesan galat memakai istilah Inggris di antarmuka Indonesia: `Needs Improvement`, `Pass`, `Delayed/Completed` (`submitVerif`, `progress`).
-- `pkgProgress` memakai ekspresi tunggal yang panjang dengan fallback `|| (v ? 100 : 0)`. Hasilnya valid untuk seed, tetapi nilai `progress` di luar daftar `PROGRESS` akan menghasilkan `NaN`.
+- Diperbaiki di cabang `improve/audit-leftovers`: anggaran seed `p1` (`approved`) disamakan menjadi Rp 220 juta sesuai log revisi; pesan galat dan petunjuk form memakai istilah Indonesia (Tertunda/Tuntas, “Perlu perbaikan”); `pkgProgress` memakai bobot 0 untuk status tak dikenal sehingga tidak menghasilkan `NaN`.
 - Font memuat dari Google Fonts. Tanpa jaringan, tampilan jatuh ke font sistem. Tes e2e memblokir font agar deterministik.
 - Dependensi nol dan tanpa lockfile. Alat tes e2e (Playwright) dipasang di CI tanpa mengubah `package.json`.
