@@ -112,7 +112,7 @@
       ],
       packages: [
         { id: 'p1', title: 'Koridor Stasiun–Museum Puspa', desc: 'Paket lintas mitra untuk membuka perjalanan dari Stasiun Contoh ke Museum Puspa bagi pengguna kursi roda, termasuk papan petunjuk hotel terkait.', journeyId: 'j1', outcome: 'Perjalanan Stasiun Contoh → Museum Puspa dapat ditempuh pengguna kursi roda tanpa bantuan, diverifikasi dan diuji pengguna.', priority: 'Kritis', owner: 'u3', start: D(-30), end: D(60), created: D(-32), status: 'Aktif',
-          budget: { improvement: 185e6, coordination: 20e6, verification: 15e6, approved: 200e6, actual: 38e6, funding: 'Sebagian dikomitmenkan' },
+          budget: { improvement: 185e6, coordination: 20e6, verification: 15e6, approved: 220e6, actual: 38e6, funding: 'Sebagian dikomitmenkan' },
           thread: [{ by: 'Sari Wulandari', role: 'coordinator', ts: D(-10), text: 'Mohon DPU konfirmasi jadwal pengerjaan ramp kerb sebelum tenggat respons.' }, { by: 'Lestari Hartono', role: 'partner', ts: D(-6), text: 'Lift sudah diperbaiki, kami unggah bukti dan menunggu jadwal verifikator.' }] },
         { id: 'p0', title: 'Koridor Halte–Taman Puspa (selesai)', desc: 'Paket selesai yang membuka rute Halte Contoh → Taman Puspa.', journeyId: 'j4', outcome: 'Rute halte ke taman dapat ditempuh pengguna kursi roda.', priority: 'Tinggi', owner: 'u3', start: D(-160), end: D(-70), created: D(-165), status: 'Selesai',
           budget: { improvement: 40e6, coordination: 8e6, verification: 7e6, approved: 55e6, actual: 48e6, funding: 'Terpenuhi' }, thread: [] }
@@ -203,7 +203,7 @@
       if (cs.some(c => ['Sedang berjalan', 'Tertunda', 'Menunggu verifikasi', 'Tuntas'].includes(c.progress))) return 3;
       return 2;
     },
-    pkgProgress(p) { const cs = db.commitments.filter(c => c.pkgId === p.id); if (!cs.length) return 0; const w = { 'Belum dimulai': 0, 'Perencanaan': .15, 'Sedang berjalan': .5, 'Tertunda': .4, 'Tuntas': 1, 'Menunggu verifikasi': .9 }; const bs = db.barriers.filter(b => b.pkgId === p.id); const v = bs.filter(b => b.status === 'Terverifikasi').length; return Math.round(100 * (cs.reduce((a, c) => a + (c.progress === 'Menunggu verifikasi' && bs.find(b => b.id === c.barrierId)?.status === 'Terverifikasi' ? 1 : w[c.progress]), 0) / cs.length)) || (v ? 100 : 0); },
+    pkgProgress(p) { const cs = db.commitments.filter(c => c.pkgId === p.id); if (!cs.length) return 0; const w = { 'Belum dimulai': 0, 'Perencanaan': .15, 'Sedang berjalan': .5, 'Tertunda': .4, 'Tuntas': 1, 'Menunggu verifikasi': .9 }; const bs = db.barriers.filter(b => b.pkgId === p.id); const v = bs.filter(b => b.status === 'Terverifikasi').length; return Math.round(100 * (cs.reduce((a, c) => a + (c.progress === 'Menunggu verifikasi' && bs.find(b => b.id === c.barrierId)?.status === 'Terverifikasi' ? 1 : (w[c.progress] ?? 0)), 0) / cs.length)) || (v ? 100 : 0); },
     committed: p => db.commitments.filter(c => c.pkgId === p.id && ['Diterima', 'Menunggu verifikasi', 'Selesai'].includes(c.status)).reduce((a, c) => a + c.cost, 0),
     /* validated outcome = journey with a successful user test AND all its barriers verified/rejected */
     validated() { return db.tests.filter(t => t.result === 'success' && !db.barriers.some(b => b.journeyId === t.journeyId && !['Terverifikasi', 'Ditolak'].includes(b.status))); },
@@ -273,7 +273,7 @@
     reassign(cid, orgId, user) { const c = M.commit(cid); c.orgId = orgId; c.status = 'Diminta'; c.deadline = new Date(Date.now() + 7 * 864e5).toISOString(); M.barrier(c.barrierId).orgId = orgId; M.notify('partner', 'Permintaan perbaikan', `Permintaan perbaikan baru ditugaskan: ${c.task}`, '/p/requests'); M.log(user, `Menugaskan ulang ${c.id} ke ${M.orgName(orgId)}`, c.id); M.save(); },
     progress(cid, st, note, user) {
       const c = M.commit(cid); if (!c || !['Diterima', 'Menunggu verifikasi'].includes(c.status)) return 'Komitmen belum diterima.';
-      if (['Tertunda', 'Tuntas'].includes(st) && !(note || '').trim()) return 'Catatan wajib diisi untuk status Delayed/Completed.';
+      if (['Tertunda', 'Tuntas'].includes(st) && !(note || '').trim()) return 'Catatan wajib diisi untuk status Tertunda/Tuntas.';
       c.progress = st === 'Tuntas' ? 'Menunggu verifikasi' : st; if (note) c.notes.push({ ts: new Date().toISOString(), text: note });
       const p = M.pkg(c.pkgId);
       if (['Tuntas', 'Menunggu verifikasi'].includes(st)) {
@@ -293,8 +293,8 @@
       if (!d.method) return 'Metode asesmen wajib dipilih.';
       if (!(d.notes || '').trim()) return 'Observasi pendukung wajib diisi.';
       if (!d.evidence.length) return 'Lampirkan minimal satu bukti foto.';
-      if (d.result === 'Terverifikasi' && answers.some(a => a.a === 'Perlu perbaikan')) return 'Hasil “Terverifikasi” tidak dapat dipilih bila ada item Needs Improvement.';
-      if (d.result === 'Terverifikasi' && answers.every(a => ['Tidak dapat diverifikasi', 'Tidak berlaku'].includes(a.a))) return 'Tidak ada item yang benar-benar diverifikasi (Pass).';
+      if (d.result === 'Terverifikasi' && answers.some(a => a.a === 'Perlu perbaikan')) return 'Hasil “Terverifikasi” tidak dapat dipilih bila ada item “Perlu perbaikan”.';
+      if (d.result === 'Terverifikasi' && answers.every(a => ['Tidak dapat diverifikasi', 'Tidak berlaku'].includes(a.a))) return 'Tidak ada item yang benar-benar diverifikasi (Sesuai).';
       Object.assign(v, { checklist: d.checklist, method: d.method, notes: d.notes, followup: d.followup, evidence: d.evidence, result: d.result, date: new Date().toISOString(), scope: d.scope, needsApplicable: d.needs });
       const b = M.barrier(v.barrierId), c = M.commit(v.commitId);
       if (d.result === 'Terverifikasi') { v.status = 'Selesai'; M.setBarrierStatus(b.id, 'Terverifikasi', 'Diverifikasi independen.', user); c.status = 'Selesai'; c.progress = 'Tuntas'; }
